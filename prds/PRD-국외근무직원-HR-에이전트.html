@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>국외근무직원 HR 에이전트 PRD</title>
+<style>
+:root{
+  --bg:#ffffff; --fg:#1f2328; --muted:#59636e; --rule:#d8dee4;
+  --accent:#1f4e79; --accent-soft:#e8eef4; --code-bg:#f4f5f7;
+  --quote-bg:#fff8e1; --quote-bar:#e0a800; --th-bg:#eef2f6;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d1117; --fg:#e6edf3; --muted:#9198a1; --rule:#30363d;
+    --accent:#6cb6ff; --accent-soft:#16232f; --code-bg:#161b22;
+    --quote-bg:#211a06; --quote-bar:#9e7700; --th-bg:#161b22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1117; --fg:#e6edf3; --muted:#9198a1; --rule:#30363d;
+  --accent:#6cb6ff; --accent-soft:#16232f; --code-bg:#161b22;
+  --quote-bg:#211a06; --quote-bar:#9e7700; --th-bg:#161b22;
+}
+:root[data-theme="light"]{
+  --bg:#ffffff; --fg:#1f2328; --muted:#59636e; --rule:#d8dee4;
+  --accent:#1f4e79; --accent-soft:#e8eef4; --code-bg:#f4f5f7;
+  --quote-bg:#fff8e1; --quote-bar:#e0a800; --th-bg:#eef2f6;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Pretendard","Malgun Gothic","맑은 고딕",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:15px; line-height:1.7; -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:920px; margin:0 auto; padding:32px 20px 80px}
+h1,h2,h3,h4{line-height:1.35; color:var(--accent); font-weight:700}
+h1{font-size:1.85rem; margin:0 0 .3em; padding-bottom:.35em; border-bottom:2px solid var(--rule)}
+h2{font-size:1.4rem; margin:2.2em 0 .6em; padding-bottom:.3em; border-bottom:1px solid var(--rule)}
+h3{font-size:1.12rem; margin:1.8em 0 .5em}
+h4{font-size:1rem; margin:1.4em 0 .4em}
+p{margin:.6em 0}
+ul,ol{margin:.5em 0; padding-left:1.5em}
+li{margin:.25em 0}
+hr{border:0; border-top:1px solid var(--rule); margin:2em 0}
+a{color:var(--accent)}
+strong{font-weight:700}
+code{
+  font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace;
+  background:var(--code-bg); padding:.12em .38em; border-radius:4px; font-size:.88em;
+}
+pre{
+  background:var(--code-bg); border:1px solid var(--rule); border-radius:8px;
+  padding:14px 16px; overflow-x:auto; margin:1em 0;
+}
+pre code{background:none; padding:0; font-size:.8rem; line-height:1.45; white-space:pre}
+blockquote{
+  margin:1em 0; padding:.7em 1em; background:var(--quote-bg);
+  border-left:4px solid var(--quote-bar); border-radius:0 6px 6px 0;
+}
+blockquote p{margin:.3em 0}
+.tablewrap{overflow-x:auto; margin:1em 0; border:1px solid var(--rule); border-radius:8px}
+table{border-collapse:collapse; width:100%; font-size:.9rem}
+th,td{border:1px solid var(--rule); padding:8px 11px; text-align:left; vertical-align:top}
+th{background:var(--th-bg); font-weight:700; white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb, var(--fg) 3%, transparent)}
+td:first-child,th:first-child{white-space:nowrap}
+.meta{color:var(--muted); font-size:.9rem}
+@media (max-width:640px){
+  .wrap{padding:20px 14px 60px}
+  h1{font-size:1.45rem} h2{font-size:1.2rem}
+  table{font-size:.82rem} th,td{padding:6px 8px}
+}
+</style>
+</head><body><div class="wrap">
+<h1>Product Requirements Document: 국외근무직원 HR 에이전트</h1>
+<p><strong>Author</strong>: yongwo.hwang</p>
+<p><strong>Date</strong>: 2026-07-28</p>
+<p><strong>Status</strong>: Draft</p>
+<p><strong>관련 문서</strong>: <a href="./brainstorm-국외점포-HR-에이전트.md">브레인스토밍 — 국외점포 HR 에이전트</a></p>
+<hr>
+<h2>1. Executive Summary</h2>
+<p>국외근무직원(주재원)의 사택 임차계약 검토와 품의문 작성, 그리고 보수·복지·부임 관련 규정 문의 응대는 현재 본부 담당자가 100% 수작업으로 처리하고 있다. 이 프로젝트는 사내 AI 플랫폼 위에 <strong>국외근무직원 HR 에이전트</strong>를 구축해, 규정을 조항 원문과 소관부서까지 정확히 찾아주고, 계약서 작성 가이드를 현지에 직접 제공하며, 사택 임차계약 품의문 초안을 자동 생성한다.</p>
+<p>목표는 담당자의 작업 시간을 줄이는 것을 넘어, <strong>현지가 스스로 완결된 문서를 제출하게 만들어</strong> 매년 2월 정기인사발령 시기에 집중되는 병목을 해소하고, 처리 근거를 시스템에 남겨 담당자가 교체되어도 업무 연속성이 유지되게 하는 것이다.</p>
+<p>1차 버전은 <strong>담당자 전용 내부 도구</strong>로 출시하며, 검증된 답변만 주재원에게 단계적으로 공개한다.</p>
+<hr>
+<h2>2. Contacts</h2>
+<div class="tablewrap"><table><thead><tr><th>역할</th><th>담당</th><th>비고</th></tr></thead><tbody>
+<tr><td>Product Owner</td><td>yongwo.hwang (글로벌사업그룹)</td><td>PRD 작성, 우선순위 결정</td></tr>
+<tr><td>Inorganic 부임 안내 자료</td><td>권수아 계장 (글로벌성장지원부) 및 국가별 RM</td><td>인니·캄보디아 자회사</td></tr>
+<tr><td>Organic 부임 안내 자료</td><td>박정명 차장 (글로벌추진부) 및 국가별 RM</td><td>국외점포·현지법인</td></tr>
+<tr><td>국가별 HR 규정 및 사례</td><td>박승원 차장, 박정명 차장, 김마리나 과장, 권수아 계장</td><td>양 부서 공동</td></tr>
+<tr><td>국외출장 관리 자료</td><td>김민규 대리, 권수아 계장</td><td>Phase 2 대상</td></tr>
+<tr><td>규정 소관 (협의 대상)</td><td><strong>HR/직원만족부</strong></td><td>국외근무 지침 소관. 사전 공유 및 L1 답변 검수 협조 요청 필요</td></tr>
+<tr><td>구축</td><td>사내 AI 플랫폼 담당</td><td>RAG·파일업로드·툴호출 지원 확인됨</td></tr>
+</tbody></table></div>
+<blockquote><p>⚠️ 인사발령에 따라 업무별 담당자가 변동될 수 있다. <strong>자료 수집은 사람이 아니라 산출물 기준으로 관리</strong>하고, 마감을 다음 정기인사 이전으로 설정한다.</p></blockquote>
+<hr>
+<h2>3. Background &amp; Context</h2>
+<h3>3.1 현재 프로세스 (AS-IS)</h3>
+<pre><code>① 주재원이 계약서 송부 → ② 담당자가 계약 내용 검토 → ③ 계약정보 수기 입력(엑셀)
+→ ④ 규정 적합 여부 확인 → ⑤ 품의문 작성 → ⑥ 승인 및 발송</code></pre>
+<p>이 과정 전체를 담당자 1인이 수행하며, <strong>건당 약 2시간</strong>이 소요된다.</p>
+<h3>3.2 실측 데이터</h3>
+<div class="tablewrap"><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody>
+<tr><td>사택 임차계약 건수</td><td><strong>2년간 32건 = 연 16건</strong> (인도네시아·캄보디아, 신규 + 연장)</td></tr>
+<tr><td>발생 시기</td><td><strong>매년 2월 정기인사발령 시 집중</strong></td></tr>
+<tr><td>건당 담당자 소요시간</td><td><strong>2시간</strong> (계약서 검토 + 품의문 작성)</td></tr>
+<tr><td>현재원</td><td>인도네시아 16명 · 캄보디아 8명 · 국외점포 105명 (<strong>총 129명</strong>)</td></tr>
+<tr><td>본부 담당자</td><td>4~6명 (양 부서 합산)</td></tr>
+</tbody></table></div>
+<h3>3.3 왜 지금인가 — 세 가지 이유</h3>
+<p><strong>① 2월에 모든 것이 겹친다</strong> ⭐</p>
+<p>연 16건은 고르게 발생하지 않는다. 정기인사발령이 있는 2월에 집중된다. 그런데 <strong>2월은 담당자 본인도 교체되는 달이다.</strong></p>
+<blockquote><p><strong>매년 2월마다, 가장 경험이 적은 사람이 가장 많은 건을, 부임 업무까지 폭주하는 시기에 처리하게 된다.</strong></p></blockquote>
+<p>연 32시간이라는 총량은 크지 않다. 문제는 총량이 아니라 <strong>피크와 인수인계 공백이 정확히 같은 시점에 발생한다</strong>는 구조다.</p>
+<p><strong>② 장부에 잡히지 않는 왕복 비용이 있다</strong></p>
+<p>담당자 진술:</p>
+<blockquote><p>*"현지에서 계속 문의가 올 거야. 이거 어떻게 작성하면 돼요, 이 초안은 괜찮나요…"*</p></blockquote>
+<p>건당 2~3회의 왕복 문의가 발생하며, 여기에는 담당자 시간뿐 아니라 현지 직원의 시간과 대기 리드타임이 함께 든다. <strong>실제 비용은 기록된 2시간보다 크다.</strong></p>
+<p><strong>③ 암묵지가 인사발령마다 리셋된다</strong></p>
+<p>현재 규정 해석 노하우와 과거 처리 사례는 담당자 개인의 경험에 의존한다. 순환보직으로 1~2년마다 담당자가 바뀌면 그 지식이 사라진다. 담당자 작성 자료에도 *"담당자 경험 및 노하우(암묵지) 의존"* 이 문제점으로 명시되어 있다.</p>
+<h3>3.4 무엇이 새로 가능해졌나</h3>
+<div class="tablewrap"><table><thead><tr><th>조건</th><th>상태</th></tr></thead><tbody>
+<tr><td>사내 AI 플랫폼 (RAG · 파일 업로드 · 툴 호출)</td><td>✅ 전부 지원, 구축 가능</td></tr>
+<tr><td>사내 규정 자동 수집 시스템</td><td>✅ 이미 존재</td></tr>
+</tbody></table></div>
+<p>과거에는 규정을 수동으로 관리해야 해서 최신성 유지가 불가능했으나, <strong>규정 자동 수집 체계가 갖춰져 사람 의존 없이 최신 규정을 유지할 수 있게 되었다.</strong> 이것이 이 프로젝트를 지금 시작할 수 있게 만든 결정적 변화다.</p>
+<h3>3.5 조직 맥락</h3>
+<div class="tablewrap"><table><thead><tr><th>부서</th><th>관리 대상</th><th>성격</th><th>대상 인원</th></tr></thead><tbody>
+<tr><td>글로벌성장지원부</td><td>국외 지분투자 자회사</td><td>Inorganic</td><td>인니 16 · 캄보디아 8</td></tr>
+<tr><td>글로벌추진부</td><td>국외점포 · 현지법인</td><td>Organic</td><td>105</td></tr>
+</tbody></table></div>
+<p>두 부서는 관리 대상의 <strong>법인격이 다르다</strong>(자회사 vs 지점). 적용 규정·계약 주체·세무 체계가 다르므로, <strong>국가와 법인격을 데이터 모델의 1급 차원으로 설계</strong>한다. 1차 범위는 자회사 라인(인니·캄보디아)으로 통일해 규정 매칭을 단순화한다.</p>
+<hr>
+<h2>4. Objectives &amp; Success Metrics</h2>
+<h3>4.1 Objective</h3>
+<blockquote><p>**현지가 스스로 완결된 계약·품의 문서를 제출하게 만들어 2월 피크의 담당자 병목을 해소하고,</p><p>처리 근거(규정 조항·소관부서·과거 사례)를 100% 시스템에 기록해 담당자 교체와 무관하게 업무가 재현 가능하게 한다.**</p></blockquote>
+<p>이는 <strong>"담당자의 2시간을 1시간으로 줄이는 자동화"가 아니라 "현지가 스스로 해결하게 만드는 셀프서비스 전환"</strong> 이다. 목표 설정과 지표가 여기서 갈린다.</p>
+<h3>4.2 Goals</h3>
+<ol>
+<li>담당자가 규정을 찾을 때 <strong>조항 원문과 소관부서까지</strong> 한 번에 확인할 수 있게 한다.</li>
+<li>현지가 계약서를 <strong>처음부터 올바르게</strong> 작성할 수 있도록 표준 양식과 작성 가이드를 직접 제공한다.</li>
+<li>사택 임차계약 품의문을 <strong>초안 상태로 자동 생성</strong>해, 담당자가 작성자가 아닌 검토자가 되게 한다.</li>
+<li>담당자가 확정한 답변과 처리 근거를 <strong>사례로 축적</strong>해 담당자 교체 시에도 조회 가능하게 한다.</li>
+<li>규정 <strong>유권해석이 필요한 질문은 AI가 답하지 않고</strong> 소관부서로 연결한다.</li>
+</ol>
+<h3>4.3 Non-Goals</h3>
+<ol>
+<li><strong>개인정보 처리</strong> — 급여액·가족 정보·주소·여권 등을 처리하지 않는다. "규정상 이러한 기준으로 계산됩니다"까지만 안내하고 개인별 실제 금액은 조회하지 않는다.</li>
+<li><strong>급여시스템 연동</strong> — 1차 범위 밖.</li>
+<li><strong>규정 적합/부적합 판정</strong> — AI는 계약 조건이 규정에 맞는지 <strong>판정하지 않는다.</strong> 조건 추출과 체크리스트 표시까지만 하고 판단은 담당자가 한다.</li>
+<li><strong>규정 유권해석</strong> — HR/직원만족부 소관이며 AI는 수행하지 않는다.</li>
+<li><strong>주재원 직접 공개</strong> — 1차는 담당자 전용. 검증된 답변만 Phase 2에서 단계적으로 공개한다.</li>
+<li><strong>국외출장 관리</strong> — Phase 2로 이연. 항공·숙박 예약 시스템 연동은 별도 프로젝트로 분리한다.</li>
+<li><strong>비영어권 현지어 원본 처리</strong> — 현재 계약서는 한국어 품의 + 영문 계약서로 도달하므로 범위 밖.</li>
+<li><strong>담당자 승인 없는 문서 확정</strong> — 어떤 산출물도 사람의 승인 없이 확정되지 않는다.</li>
+</ol>
+<h3>4.4 Success Metrics</h3>
+<div class="tablewrap"><table><thead><tr><th>Metric</th><th>Current</th><th>Target</th><th>Measurement</th></tr></thead><tbody>
+<tr><td><strong>현지 제출본 1차 통과율</strong> (핵심)</td><td>미측정 — Phase 0에서 baseline 확보</td><td>baseline 대비 <strong>+30%p</strong></td><td>담당자 반려·재문의 없이 통과한 건 / 전체 접수 건</td></tr>
+<tr><td><strong>계약 1건당 현지 왕복 문의 횟수</strong></td><td>미측정</td><td>baseline 대비 <strong>50% 감소</strong></td><td>건별 문의 스레드 수 집계</td></tr>
+<tr><td><strong>2월 피크 리드타임</strong> (접수 → 품의문 완료)</td><td>미측정</td><td>baseline 대비 <strong>50% 단축</strong></td><td>접수 시각 ~ 담당자 승인 시각 로그</td></tr>
+<tr><td>담당자 건당 소요시간</td><td><strong>2시간</strong></td><td>1시간 이하</td><td>담당자 자기보고 + 시스템 로그</td></tr>
+<tr><td>근거 조항·소관부서 자동 기록률</td><td>0%</td><td><strong>100%</strong></td><td>처리 건 로그 감사</td></tr>
+<tr><td>담당자 승인 없이 확정된 산출물</td><td>0건</td><td><strong>0건 유지</strong></td><td>승인 로그 감사</td></tr>
+<tr><td>L3(유권해석) 질문에 AI가 답변한 건수</td><td>—</td><td><strong>0건</strong></td><td>답변 로그 샘플 감사 (월 1회)</td></tr>
+<tr><td>담당자가 자발적으로 사용한 주간 활성일</td><td>—</td><td>주 3일 이상</td><td>사용 로그</td></tr>
+</tbody></table></div>
+<blockquote><p>Phase 0에서 2주간 baseline을 측정한 뒤 목표치를 확정한다. 측정 기준선 없이 목표를 세우면 성과를 증명할 수 없다.</p></blockquote>
+<hr>
+<h2>5. Target Users &amp; Segments</h2>
+<p>시장은 인구통계가 아니라 <strong>사람들이 하려는 일(job)</strong> 로 정의한다.</p>
+<div class="tablewrap"><table><thead><tr><th>세그먼트</th><th>규모</th><th>사용 빈도</th><th>하려는 일</th><th>Phase</th></tr></thead><tbody>
+<tr><td><strong>A. 본부 담당자 (HR·계약)</strong></td><td>4~6명</td><td><strong>매일</strong></td><td>계약서 검토, 품의문 작성, 규정 문의 응대, 데이터 관리</td><td><strong>Phase 1 (주 사용자)</strong></td></tr>
+<tr><td><strong>B. 현지 직원 / RM</strong></td><td>인니 16 · 캄보디아 8</td><td>계약 시점 집중</td><td>계약서를 올바르게 작성해 한 번에 통과시키기</td><td><strong>Phase 1 (간접) → Phase 2 (직접)</strong></td></tr>
+<tr><td>C. 주재원 (부임 준비 중)</td><td>연간 수십 명</td><td>생애 1~2회</td><td>부임 준비 항목 파악</td><td>Phase 2</td></tr>
+<tr><td>D. 주재원 (근무 중)</td><td>129명</td><td>산발적</td><td>보수·복지 규정이 내 상황에 어떻게 적용되는지 확인</td><td>Phase 2</td></tr>
+<tr><td>E. 후임 담당자</td><td>1~2년마다 교체</td><td>인수인계 시점</td><td>전임자의 판단 근거와 과거 사례 파악</td><td>Phase 1부터 자동 축적</td></tr>
+</tbody></table></div>
+<h3>왜 담당자가 먼저인가</h3>
+<p>주재원 챗봇을 먼저 만들 경우의 리스크는 기술이 아니라 <strong>채택</strong>이다. 주재원은 급하면 챗봇 대신 담당자에게 메신저를 보낸다. 더 빠르고, 확실하고, 책임 소재가 명확하기 때문이다. 부임은 1인당 2~3년에 1회 발생하는 이벤트라 재방문이 없어 학습 곡선도 타지 못한다.</p>
+<p>담당자를 먼저 대상으로 하면:</p>
+<ul>
+<li><strong>채택이 보장된다</strong> — 어차피 규정을 찾아야 하므로 조금이라도 빠르면 쓴다</li>
+<li><strong>답변 품질을 실사용으로 교정한다</strong> — 담당자가 오답을 즉시 잡아내고, 그 교정본이 지식베이스가 된다</li>
+<li><strong>주재원 오픈 시점에 이미 검증된 상태다</strong> — 챗봇 실패의 최대 원인(초기 품질 저하 → 신뢰 상실)을 원천 제거</li>
+<li><strong>조직 내 저항이 없다</strong> — 담당자가 대체 대상이 아니라 소유자가 된다</li>
+</ul>
+<h3>제약 조건</h3>
+<ul>
+<li>국가와 법인격(자회사/지점)에 따라 적용 규정이 다르다 → 1차는 자회사 라인으로 통일</li>
+<li>담당자는 인사발령으로 교체된다 → 개인이 아닌 시스템에 지식이 남아야 한다</li>
+<li>규정 소관이 부서별로 혼재한다 → 답변 책임 범위를 명시적으로 제한해야 한다 (§7.2 L1/L2/L3)</li>
+</ul>
+<hr>
+<h2>6. Value Propositions</h2>
+<h3>6.1 본부 담당자에게</h3>
+<div class="tablewrap"><table><thead><tr><th>현재의 고통</th><th>제공하는 가치</th></tr></thead><tbody>
+<tr><td>20페이지 영문 계약서를 처음부터 읽어야 함</td><td>핵심 조건이 추출되어 확인이 필요한 항목만 집중</td></tr>
+<tr><td>품의문을 매번 처음부터 작성</td><td>초안이 채워진 상태로 도착 — <strong>작성자가 아닌 검토자</strong></td></tr>
+<tr><td>현지에서 같은 질문이 반복 도착</td><td>현지가 가이드를 보고 스스로 해결</td></tr>
+<tr><td>규정집을 뒤져 근거를 찾음</td><td>조항 원문 + 소관부서가 즉시 검색됨</td></tr>
+<tr><td>2월에 모든 것이 몰림</td><td>피크 시 처리량이 시스템으로 흡수됨</td></tr>
+<tr><td>인수인계 시 전임자에게 계속 물어봄</td><td>과거 처리 건이 근거와 함께 조회됨</td></tr>
+</tbody></table></div>
+<h3>6.2 현지 직원 / 주재원에게</h3>
+<div class="tablewrap"><table><thead><tr><th>현재의 고통</th><th>제공하는 가치</th></tr></thead><tbody>
+<tr><td>계약서를 어떻게 써야 할지 몰라 본부에 물어봄</td><td>표준 양식 + 작성 가이드 + 유의사항을 즉시 확인</td></tr>
+<tr><td>제출 후 반려되어 다시 작업</td><td>제출 전에 필요한 항목을 미리 확인</td></tr>
+<tr><td>답변을 기다리는 대기 시간</td><td>즉시 응답</td></tr>
+<tr><td>규정 근거를 알 수 없어 납득이 안 됨</td><td>조항 원문이 함께 제시됨</td></tr>
+</tbody></table></div>
+<h3>6.3 경쟁 대안 대비</h3>
+<div class="tablewrap"><table><thead><tr><th>대안</th><th>한계</th></tr></thead><tbody>
+<tr><td>담당자에게 직접 문의 (현행)</td><td>담당자 시간 소모, 2월 병목, 답변이 기록되지 않음</td></tr>
+<tr><td>안내서 PDF 배포</td><td>국가별 형식 불일치, 개정 반영 지연, 검색 불가</td></tr>
+<tr><td>범용 사내 AI에 질문</td><td>국외근무 규정·양식·사례를 모름. 출처와 소관 표기 없음</td></tr>
+<tr><td><strong>본 에이전트</strong></td><td>규정 자동 동기화 + 출처·소관 표기 + 승인 게이트 + 사례 축적</td></tr>
+</tbody></table></div>
+<hr>
+<h2>7. Solution</h2>
+<h3>7.1 사용자 흐름</h3>
+<p><strong>흐름 A — 규정 문의 (담당자)</strong></p>
+<pre><code>질문 입력 → 규정 검색 → [L3 판정] ─ L3면 ─→ 답변하지 않고 소관부서 연결
+                              └ L1·L2면 ─→ 조항 원문 + 소관부서 + 면책문구 표시
+                                              → 담당자 확정 → 사례로 축적</code></pre>
+<p><strong>흐름 B — 계약서 작성 지원 (현지 → 담당자)</strong></p>
+<pre><code>"인도네시아 사택 계약서 어떻게 쓰나요?"
+  → 표준 양식 + 작성 가이드 + 유의사항 제공
+  → 현지가 작성해 제출
+  → 담당자가 검토 (반려 없이 통과되는 것이 목표)</code></pre>
+<p><strong>흐름 C — 품의문 초안 생성 (담당자)</strong></p>
+<pre><code>계약서 업로드 → 조건 추출 (원문 위치 하이라이트)
+  → 담당자가 추출값 확인·수정
+  → 품의문 초안(.docx) 자동 생성
+  → 🚦 담당자 승인 게이트
+  → 승인 후 확정 + 계약DB 적재 + 사례 축적</code></pre>
+<blockquote><p><strong>모든 흐름의 공통 원칙</strong>: 에이전트는 <strong>제안(propose)</strong> 만 하고, <strong>확정(commit)</strong> 은 언제나 사람이 한다.</p></blockquote>
+<h3>7.2 Key Features</h3>
+<h4>🔑 핵심 설계 — 답변 책임 등급 (L1 / L2 / L3)</h4>
+<p>국외근무 지침의 소관은 <strong>HR/직원만족부</strong>이나 실무 답변은 <strong>글로벌사업그룹</strong>이 수행한다. 이 분업 자체는 정상이지만, AI 시스템에 넣으면 <strong>기록이 남고, 129명에게 동시에 전달되며, "부서 공식 견해"로 인식된다.</strong> 지금까지 "담당자의 실무 안내"였던 것이 "부서의 유권해석"처럼 보이게 된다.</p>
+<p>이를 해결하기 위해 모든 답변을 세 등급으로 구분하고 <strong>AI는 L1·L2만 수행한다.</strong></p>
+<div class="tablewrap"><table><thead><tr><th>등급</th><th>유형</th><th>예시</th><th>소관</th><th>AI</th></tr></thead><tbody>
+<tr><td><strong>L1</strong></td><td>규정 원문 인용</td><td>"보수·복지 규정 제○조: 주택수당 한도는 ○○"</td><td>HR 소관이나 <strong>인용은 해석이 아님</strong></td><td>✅</td></tr>
+<tr><td><strong>L2</strong></td><td>절차·실무 안내</td><td>"계약서는 이 양식으로 담당자에게 제출"</td><td><strong>글로벌 자체 소관</strong></td><td>✅</td></tr>
+<tr><td><strong>L3</strong></td><td>해석·판단</td><td>"배우자가 현지 취업했는데 가족수당 대상인가요?" / "이 조건이 규정 위반인가요?" / "예외 승인 가능한가요?"</td><td><strong>HR 유권해석 필요</strong></td><td>❌ 차단</td></tr>
+</tbody></table></div>
+<blockquote><p><strong>현재 담당자가 하는 답변의 대부분은 이미 L1 + L2다.</strong> 진짜 유권해석이 필요한 L3는 현재도 HR에 확인하고 있다.</p><p>따라서 <strong>AI는 책임 경계를 바꾸지 않는다. 암묵적으로 지켜지던 경계를 명시적으로 만들 뿐이다.</strong></p><p>오히려 현재보다 안전하다 — 지금은 담당자가 무심코 L3를 답할 수 있지만, 시스템은 이를 감지해 차단한다.</p></blockquote>
+<p><strong>부수 효과</strong>: L3 질문의 대부분이 "제 경우에는?" 형태다. 개인정보를 처리하지 않기로 한 결정(Non-Goal 1)이 자연스럽게 L3를 차단하는 방어 장치로 작동한다.</p>
+<hr>
+<h4>P0 — Must Have</h4>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>User Story</th><th>Acceptance Criteria</th></tr></thead><tbody>
+<tr><td>1</td><td><strong>담당자로서</strong>, 규정을 질문하면 조항 원문과 소관부서가 함께 나와야, 근거를 갖춘 답변을 바로 회신할 수 있다.</td><td>① 자연어 질문에 관련 조항 <strong>원문</strong>과 조항 번호가 반환된다 ② <strong>소관부서</strong>가 함께 표시된다 ③ 시행일 기준 <strong>현행 규정</strong>만 검색되며 구 규정은 구분 표시된다 ④ 근거를 찾지 못하면 추측하지 않고 "찾지 못했습니다"로 응답한다 ⑤ 국가·법인격 조건이 없으면 되묻는다(임의 가정 금지) ⑥ 요약보다 <strong>원문을 먼저</strong> 노출한다</td></tr>
+<tr><td>2</td><td><strong>담당자/현지 직원으로서</strong>, 계약서 표준 양식과 작성 가이드를 직접 받을 수 있어야, 작성 방법을 매번 문의하지 않아도 된다.</td><td>① 국가를 지정하면 해당 표준 양식이 즉시 제공된다 ② 작성 가이드와 유의사항이 함께 표시된다 ③ 규정상 필수 기재 항목이 체크리스트로 제시된다 ④ 양식이 개정되면 최신본이 제공된다 ⑤ 국가·법인격별로 양식이 분기된다</td></tr>
+<tr><td>3</td><td><strong>담당자로서</strong>, 계약 검토 후 품의문 초안이 자동 생성되어야, 문서를 처음부터 작성하지 않는다.</td><td>① 확정된 계약 필드값이 표준 양식의 지정 위치에 채워진 <code>.docx</code>가 생성된다 ② 자동 채움된 값은 <strong>원본 필드 출처가 추적 가능</strong>하다 ③ 채울 수 없는 항목은 임의 생성하지 않고 <code>[확인필요]</code> 플레이스홀더로 남긴다 ④ 승인 전에는 <code>초안/미승인</code>으로 명확히 표시되며 발송 대상에서 제외된다 ⑤ 담당자가 그대로 편집·결재 상신할 수 있는 포맷이다</td></tr>
+<tr><td>4</td><td><strong>담당자로서</strong>, 유권해석이 필요한 질문에는 AI가 답하지 않아야, 잘못된 공식 견해가 남지 않는다.</td><td>① "~에 해당하나요", "~예외 되나요", "~위반인가요" 류 질문을 L3로 감지한다 ② L3 질문에는 답변하지 않고 소관부서 확인이 필요함을 안내한다 ③ 소관에 따라 에스컬레이션 대상이 분기된다(자체 소관 → 담당자 / HR 소관 → HR) ④ 모든 답변에 면책 문구가 고정 표기된다 ⑤ L3 차단 이력이 로그로 남는다</td></tr>
+<tr><td>5</td><td><strong>관리자로서</strong>, 사람의 승인 없이는 어떤 산출물도 확정되지 않아야, 시스템을 신뢰할 수 있다.</td><td>① 모든 산출물은 <code>초안</code> 상태로만 생성된다 ② 담당자 승인 액션이 있어야 확정된다 ③ 미승인 산출물은 확정 대상에서 제외된다 ④ 누가·언제·무엇을·어떤 근거로 승인했는지 감사 로그가 남는다</td></tr>
+<tr><td>6</td><td><strong>후임 담당자로서</strong>, 과거 처리 건을 검색할 수 있어야, 전임자에게 매번 묻지 않고 일관된 기준으로 처리할 수 있다.</td><td>① 국가·유형·기간으로 과거 건을 검색할 수 있다 ② 각 건은 <code>요청 → 적용 조항 → 판단 → 산출물</code>이 연결되어 표시된다 ③ 예외 처리 건은 사유가 함께 기록된다 ④ 담당자 교체 시 별도 마이그레이션 없이 조회 가능하다</td></tr>
+</tbody></table></div>
+<h4>P1 — Should Have</h4>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>User Story</th><th>Acceptance Criteria</th></tr></thead><tbody>
+<tr><td>7</td><td><strong>담당자로서</strong>, 내가 수정한 답변이 지식베이스에 반영되어야, 같은 오답이 반복되지 않는다.</td><td>① 담당자가 답변을 수정·확정하면 확정본이 사례로 축적된다 ② 이후 유사 질문에 확정본이 우선 참조된다 ③ 수정 이력이 남는다</td></tr>
+<tr><td>8</td><td><strong>담당자로서</strong>, 근거 규정이 개정되면 관련 답변이 표시되어야, 구 규정 기반 답변이 남지 않는다.</td><td>① 규정 개정 감지 시 해당 조항을 근거로 한 확정 답변이 <code>검토필요</code>로 표시된다 ② HR 소관 규정은 정기 재확인 주기가 별도 적용된다</td></tr>
+<tr><td>9</td><td><strong>담당자로서</strong>, 계약서를 업로드하면 조건이 추출되어야, 20페이지를 처음부터 읽지 않아도 된다.</td><td>① 업로드 후 정해진 시간 내 추출 결과가 표시된다 ② 임차료·보증금·계약기간·중도해지·부대비용 부담주체가 추출된다 ③ 각 필드는 <strong>원문 위치로 링크/하이라이트</strong>된다 ④ 신뢰도가 낮은 필드는 <code>확인필요</code>로 명시된다 ⑤ 담당자 수정 이력이 남고 이후 단계에 반영된다 ⑥ 추출 결과가 계약관리 DB에 적재되어 엑셀 수기 입력을 대체한다</td></tr>
+</tbody></table></div>
+<h3>7.3 Technology</h3>
+<p><strong>아키텍처</strong></p>
+<pre><code>[입력]                      [처리]                          [출력]
+규정·지침 ──(자동수집)──┐
+안내서    ──(부서관리)──┼──▶ 문서 파이프라인 ──▶ [지식베이스]
+표준양식  ──────────────┤    파싱→청킹→메타데이터    + 버전/시행일
+과거사례  ──────────────┘    (시행일·국가·법인격·소관)      │
+                                                            │
+계약서 PDF ──▶ [추출] ──▶ 구조화 필드 ─────────────────────┤
+                                                            ▼
+                    ┌──────────────────────────────────────┐
+                    │        HR 에이전트 (사내 AI 플랫폼)   │
+                    │  Tools:                              │
+                    │   • search_regulation(q, country)    │
+                    │   • get_template(country, doc_type)  │
+                    │   • extract_lease_terms(file)        │
+                    │   • draft_memo(template, fields)     │
+                    │   • log_case(...)                    │
+                    │  Guard: classify_liability(q) → L1/L2/L3
+                    └──────────────────────────────────────┘
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              ▼                     ▼                     ▼
+      [답변 + 출처 + 소관]     [양식 + 가이드]      [품의문 초안.docx]
+              │                     │                     │
+              └────────► 🚦 담당자 승인 게이트 ◄───────────┘
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              ▼                     ▼                     ▼
+        [사례 DB 적립]        [계약관리 DB]        [결재 상신용 문서]
+              │
+              └──▶ 지식베이스로 재투입 (교정 루프)</code></pre>
+<p><strong>설계 원칙</strong></p>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>원칙</th><th>이유</th></tr></thead><tbody>
+<tr><td>1</td><td>에이전트는 <strong>제안</strong>만, <strong>확정</strong>은 사람이</td><td>책임 경계. 컴플라이언스 통과의 전제</td></tr>
+<tr><td>2</td><td><strong>툴 목록 자체가 하드 가드레일</strong></td><td>프롬프트로 통제하지 않는다. 툴에 없는 일은 할 수 없다</td></tr>
+<tr><td>3</td><td>모든 답변에 <strong>출처 + 소관</strong> 필수</td><td>은행에서 출처 없는 답변은 신뢰받지 못한다</td></tr>
+<tr><td>4</td><td><strong>"모른다"고 말하는 것이 기능</strong></td><td>틀린 답 1건이 맞는 답 100건의 신뢰를 없앤다</td></tr>
+<tr><td>5</td><td>규정 문서에 <strong>시행일·버전·소관 메타데이터 필수</strong></td><td>없는 문서는 인덱싱하지 않는다</td></tr>
+<tr><td>6</td><td><strong>템플릿은 코드가 아니라 데이터</strong></td><td>양식은 규정보다 자주 바뀐다. 배포 없이 반영되어야 한다</td></tr>
+<tr><td>7</td><td><strong>국가·법인격은 1급 차원</strong></td><td>자회사와 지점은 적용 규정이 다르다</td></tr>
+<tr><td>8</td><td>챗봇은 기능이 아니라 <strong>플랫폼</strong></td><td>계약·출장 기능은 툴 추가로 확장 (§8)</td></tr>
+</tbody></table></div>
+<p><strong>지식베이스 운영</strong></p>
+<div class="tablewrap"><table><thead><tr><th>구분</th><th>관리 방식</th><th>소유</th></tr></thead><tbody>
+<tr><td>규정·지침</td><td><strong>자동 동기화</strong> (사내 규정 수집 시스템 활용)</td><td>시스템</td></tr>
+<tr><td>안내서·양식</td><td>수동 등록·갱신</td><td>글로벌성장지원부 / 글로벌추진부</td></tr>
+<tr><td>사례</td><td>담당자 확정 시 자동 축적</td><td>시스템</td></tr>
+</tbody></table></div>
+<h3>7.4 Assumptions</h3>
+<p>명시적으로 검증이 필요한 가정. 🔴 = Phase 0에서 반드시 확인</p>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>가정</th><th>신뢰도</th><th>검증 방법</th></tr></thead><tbody>
+<tr><td>A1</td><td>현지가 가이드를 보면 실제로 스스로 작성한다</td><td>🔴</td><td>최근 계약 건의 왕복 문의 유형을 분류해, 가이드로 해결 가능한 비율 산출</td></tr>
+<tr><td>A2</td><td>담당자가 AI 초안을 처음부터 쓰는 것보다 선호한다</td><td>🟡</td><td>품의문 5건을 수동으로 초안 생성해 담당자가 직접 판정</td></tr>
+<tr><td>A3</td><td>계약 건수가 2월에 실제로 집중된다</td><td>🟡</td><td>최근 2년 월별 분포 실측</td></tr>
+<tr><td>A4</td><td>규정 자동 수집이 개정을 적시에 반영한다</td><td>🔴</td><td>수집 주기·메타데이터 동반 여부·폐지 규정 제외 여부 확인</td></tr>
+<tr><td>A5</td><td>L3 질문을 안정적으로 감지할 수 있다</td><td>🔴</td><td>과거 문의 중 유권해석 필요 건을 모아 분류 정확도 측정</td></tr>
+<tr><td>A6</td><td>HR/직원만족부가 L1 인용 활용에 동의한다</td><td>🔴</td><td>착수 전 사전 공유 및 협의</td></tr>
+<tr><td>A7</td><td>영문 계약서에서 필드 추출이 실용 수준으로 가능하다</td><td>🟡</td><td>실제 계약서 10건으로 정확도 실측 (P1 범위)</td></tr>
+<tr><td>A8</td><td>자료 수집을 담당자들이 본업과 병행해 완료할 수 있다</td><td>🔴</td><td>4개 항목 중 1개를 2주 내 실제로 확보해 일정 현실성 검증</td></tr>
+<tr><td>A9</td><td>규정·양식이 자회사(인니·캄보디아)에 일관되게 적용된다</td><td>🟡</td><td>양국 규정·양식을 대조</td></tr>
+</tbody></table></div>
+<hr>
+<h2>8. Release Plan</h2>
+<p>정확한 날짜 대신 단계로 표기한다. <strong>각 단계는 이전 단계의 성공 기준을 충족해야 다음으로 넘어간다.</strong></p>
+<h3>Phase 0 — 검증 (개발 착수 전, 2~4주)</h3>
+<p>목표: 🔴 가정을 실제로 깨고 baseline을 확보한다.</p>
+<ul>
+<li>☐ 담당자 업무시간 및 <strong>현지 제출본 1차 통과율 baseline</strong> 2주 측정</li>
+<li>☐ 최근 2년 <strong>월별 계약 건수 분포</strong> 실측 (2월 집중도 정량화)</li>
+<li>☐ <strong>현지 왕복 문의 실태</strong> — 건당 평균 횟수, 주요 질문 유형 분류</li>
+<li>☐ 담당자 수신 문의 100건 샘플링 → <strong>L1/L2/L3 분류</strong> 및 AI 답변 가능 비율</li>
+<li>☐ 규정 자동 수집 <strong>세부 확인</strong> — 개정 반영 주기 / 시행일·버전 메타데이터 / 폐지 규정 제외</li>
+<li>☐ <strong>규정별 소관부서 목록</strong> 작성 (HR 소관 vs 자체 소관)</li>
+<li>☐ ⭐ <strong>HR/직원만족부 사전 공유</strong> — L1 인용 범위 확인, 답변 품질 검수 협조 요청</li>
+<li>☐ 자료 수집 4개 항목 중 <strong>1개를 2주 내 실제 확보</strong> (일정 현실성 검증)</li>
+<li>☐ 규정 20문항 골든셋으로 사내 플랫폼 RAG 정확도 측정</li>
+</ul>
+<p><strong>진행 기준</strong>: L1+L2로 답변 가능한 문의 비율이 60% 이상이고, 자료 수집 일정이 현실적일 것.</p>
+<h3>Phase 1 — Wedge (담당자 전용, 인도네시아 우선)</h3>
+<div class="tablewrap"><table><thead><tr><th>기능</th><th>내용</th></tr></thead><tbody>
+<tr><td><strong>규정 Q&amp;A</strong></td><td>조항 원문 + 소관부서 표기, L1·L2만 응답 / L3 차단</td></tr>
+<tr><td><strong>계약서 양식·가이드 제공</strong></td><td>툴 불필요. 왕복 문의를 직접 제거</td></tr>
+<tr><td><strong>품의문 초안 생성</strong></td><td>사택 임차계약 품의문 1종</td></tr>
+<tr><td><strong>사례 축적 + 교정 루프</strong></td><td>담당자 확정본이 지식베이스로 재투입</td></tr>
+</tbody></table></div>
+<p><strong>🎯 성공 기준</strong>: 담당자가 자발적으로 계속 사용한다 (주 3일 이상) + 2월 피크 리드타임 단축</p>
+<blockquote><p>⚠️ 품의문을 1종만 만들면 템플릿 구조가 일반화되었는지 검증되지 않는다. Phase 1 후반에 두 번째 종류(학자금 요청 품의문 등)를 추가해 하드코딩과 구분할 것을 권고한다.</p></blockquote>
+<h3>Phase 2 — 현지·주재원 오픈 + 확장</h3>
+<ul>
+<li>담당자가 <strong>확정한 답변만</strong> 현지·주재원에게 공개 (인니 16명 + 캄보디아 8명 먼저)</li>
+<li>계약서 업로드 → <strong>필드 추출</strong> + 계약관리 DB 적재 (엑셀 수기 입력 대체)</li>
+<li>부임·복귀 <strong>개인화 체크리스트</strong></li>
+<li><strong>국외출장 Q&amp;A + 출장비 계산기</strong> — 여비규정을 지식베이스에 추가하면 대부분 따라온다</li>
+</ul>
+<p><strong>🎯 성공 기준</strong>: 현지 제출본 1차 통과율 상승, 건당 왕복 문의 횟수 감소</p>
+<h3>Phase 3 — 본격 확장</h3>
+<ul>
+<li><strong>규정 적합성 체크리스트</strong> — Phase 1~2의 사례 축적 이후에야 정합성 확보 가능</li>
+<li><strong>지점 라인 확대</strong> (런던·홍콩 등 / 글로벌추진부 / 105명) — 자회사와 규정 체계가 다르므로 규정 매핑 별도 검증. 계약 건수 기준 약 4배 규모</li>
+<li>항공·숙박 <strong>예약 시스템 연동</strong> — 별도 프로젝트로 검토</li>
+</ul>
+<h3>확장 원칙</h3>
+<p>담당자 자료의 기능 4개(부임안내 / 보수복지 / 계약서 / 출장)를 <strong>순서대로 하나씩</strong> 만드는 것이 아니라, <strong>각 기능을 난이도별로 쪼개어 쉬운 조각을 앞으로 당긴다.</strong></p>
+<p>예: "계약서 관리"의 네 조각 중 <strong>표준양식 제공·작성 가이드는 툴이 필요 없으므로 Phase 1에 포함</strong>하고, 적합성 검토는 Phase 3로 미룬다. 출장 관리도 <strong>Q&amp;A와 계산기는 저비용으로 Phase 2에 붙고</strong>, 예약 연동만 별도로 분리한다.</p>
+<hr>
+<h2>9. Open Items</h2>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>항목</th><th>처리</th></tr></thead><tbody>
+<tr><td>O1</td><td>2월 집중도 실측치</td><td>Phase 0 측정 후 §3.3에 반영</td></tr>
+<tr><td>O2</td><td>현지 왕복 문의 횟수 baseline</td><td>Phase 0 측정 후 §4.4 목표치 확정</td></tr>
+<tr><td>O3</td><td>현지 제출본 1차 통과율 baseline</td><td>Phase 0 측정 후 §4.4 목표치 확정</td></tr>
+<tr><td>O4</td><td>HR/직원만족부 협의 결과</td><td>Phase 0. 결과에 따라 §7.2 L1 범위 조정</td></tr>
+<tr><td>O5</td><td>지식베이스 안내서 갱신 담당자 지정</td><td>역할 기준으로 지정 필요 (인사발령 대응)</td></tr>
+<tr><td>O6</td><td>두 번째 품의문 종류 선정</td><td>Phase 1 후반. 템플릿 일반화 검증용</td></tr>
+</tbody></table></div>
+</div></body></html>
