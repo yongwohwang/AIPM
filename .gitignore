@@ -1,0 +1,43 @@
+# --- 환경 변수 / 시크릿 ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- OS / 에디터 ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Node / TypeScript ---
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- 로그 / 임시 파일 ---
+*.log
+tmp/
+.cache/
