@@ -2,7 +2,7 @@
 <html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>국외근무직원 관리 에이전트 PRD</title>
+<title>국외근무직원 관리를 위한 HR 에이전트 PRD</title>
 <style>
 :root{
   --bg:#ffffff; --fg:#1f2328; --muted:#59636e; --rule:#d8dee4;
@@ -65,6 +65,7 @@ th{background:var(--th-bg); font-weight:700; white-space:nowrap}
 tbody tr:nth-child(even){background:color-mix(in srgb, var(--fg) 3%, transparent)}
 th:first-child{white-space:nowrap}
 td br{content:''; display:block; margin-top:.35em}
+.cont{margin:.2em 0 .1em .2em; color:var(--muted); font-size:.92em}
 .meta{color:var(--muted); font-size:.9rem}
 @media (max-width:640px){
   .wrap{padding:20px 14px 60px}
@@ -76,19 +77,19 @@ td br{content:''; display:block; margin-top:.35em}
 <h1>제품 요구사항 정의서 (PRD)</h1>
 <h2>0. 문서 개요</h2>
 <ul>
-<li>문서 제목 / Title: 국외근무직원 관리 에이전트 제품 요구사항 정의서</li>
-<li>버전 / Version: v0.3 (초안)</li>
+<li>문서 제목 / Title: 국외근무직원 관리를 위한 HR 에이전트 제품 요구사항 정의서</li>
+<li>버전 / Version: v0.4 (초안)</li>
 <li>작성자(요청자) / Author(Requester): yongwo.hwang / 글로벌사업그룹</li>
 <li>작성일 / Date: 2026-07-28</li>
 </ul>
 <hr>
 <h1>I. 제품 정의</h1>
 <h2>5. 제품명 / Product Name</h2>
-<p><strong>국외근무직원 관리 에이전트</strong></p>
+<p><strong>국외근무직원 관리를 위한 HR 에이전트</strong></p>
 <h2>6. 제품 요약 / Executive Summary</h2>
-<p>국외근무직원 관리 에이전트는 <strong>국외근무직원, 예비발령자, 글로벌사업그룹 HR 담당자가 내부 시스템을 통해 접속하여 사용하는 대화형 AI 에이전트</strong>임. 국외 근무와 관련된 절차 및 규정에 대한 질의응답 창구 역할을 수행함.</p>
-<p>현재 국외근무직원 약 120명의 관련 문의가 글로벌사업그룹 HR 담당자 1~2명에게 집중되어 있으며, 동일 질문의 반복 발생과 답변 미기록으로 인한 재작업이 상시 발생. 본 에이전트는 해당 문의를 시스템이 1차로 수용하여 근거 기반 답변을 즉시 제공함.</p>
-<p>주요 제공 기능은 다음과 같음.</p>
+<p>국외근무직원 관리를 위한 HR 에이전트는 <strong>국외근무직원, 예비발령자, 글로벌사업그룹 HR 담당자가 내부 시스템을 통해 접속하여 사용하는 대화형 AI 에이전트</strong>. 국외 근무와 관련된 절차 및 규정에 대한 질의응답 창구 역할 수행</p>
+<p>현재 국외근무직원 약 120명의 관련 문의가 글로벌사업그룹 HR 담당자 1~2명에게 집중되어 있으며, 동일 질문의 반복 발생과 답변 미기록으로 인한 재작업이 상시 발생. 본 에이전트는 해당 문의를 시스템이 1차로 수용하여 근거 기반 답변 즉시 제공</p>
+<p>주요 제공 기능</p>
 <ul>
 <li><strong>부임·복귀 절차 안내</strong> — 국가 및 법인격별 준비 항목, 제출 서류, 기한 안내</li>
 <li><strong>보수·복지 및 HR 규정 안내</strong> — 질의 관련 규정 조항의 원문 및 조항 번호 제시</li>
@@ -101,18 +102,12 @@ td br{content:''; display:block; margin-top:.35em}
 <h2>7. 목표 / Goals (Objectives)</h2>
 <blockquote><p><strong>국외 근무 관련 절차·규정 문의에 대한 자체 확인 체계를 구축하고, 답변 근거를 시스템에 기록하여 담당자 변경과 무관한 답변 일관성 확보.</strong></p></blockquote>
 <ul>
-<li>담당자 수신 문의 건수 <strong>40% 감축</strong> (도입 전 2주 기준값 대비)</li>
-<li>(계산식) (도입 전 월평균 문의 건수 − 도입 후 월평균 문의 건수) ÷ 도입 전 월평균 문의 건수 × 100</li>
-<li>담당자 개입 없이 종결되는 문의 비율 <strong>60% 확보</strong></li>
-<li>(계산식) 담당자 개입 없이 종결된 문의 건수 ÷ 전체 문의 건수 × 100</li>
-<li>규정 답변 정답률 <strong>90% 이상 달성</strong></li>
-<li>(계산식) 평가 문항 중 정답 처리 문항 수 ÷ 전체 평가 문항 수 × 100</li>
-<li>답변 근거(조항 원문·소관부서) 표시율 <strong>100% 유지</strong></li>
-<li>(계산식) 조항 원문 및 소관부서가 표시된 답변 수 ÷ 전체 답변 수 × 100</li>
-<li>문의 1건당 담당자 소요시간 <strong>30% 단축</strong></li>
-<li>(계산식) (도입 전 건당 평균 소요시간 − 도입 후 건당 평균 소요시간) ÷ 도입 전 건당 평균 소요시간 × 100</li>
-<li>확정 답변의 근거 기록률 <strong>100% 확보</strong></li>
-<li>(계산식) 근거 조항이 기록된 확정 답변 수 ÷ 전체 확정 답변 수 × 100</li>
+<li>담당자 수신 문의 건수 <strong>40% 감축</strong> (도입 전 2주 기준값 대비)<div class="cont">(계산식) (도입 전 월평균 문의 건수 − 도입 후 월평균 문의 건수) ÷ 도입 전 월평균 문의 건수 × 100</div></li>
+<li>담당자 개입 없이 종결되는 문의 비율 <strong>60% 확보</strong><div class="cont">(계산식) 담당자 개입 없이 종결된 문의 건수 ÷ 전체 문의 건수 × 100</div></li>
+<li>규정 답변 정답률 <strong>90% 이상 달성</strong><div class="cont">(계산식) 평가 문항 중 정답 처리 문항 수 ÷ 전체 평가 문항 수 × 100</div></li>
+<li>답변 근거(조항 원문·소관부서) 표시율 <strong>100% 유지</strong><div class="cont">(계산식) 조항 원문 및 소관부서가 표시된 답변 수 ÷ 전체 답변 수 × 100</div></li>
+<li>문의 1건당 담당자 소요시간 <strong>30% 단축</strong><div class="cont">(계산식) (도입 전 건당 평균 소요시간 − 도입 후 건당 평균 소요시간) ÷ 도입 전 건당 평균 소요시간 × 100</div></li>
+<li>확정 답변의 근거 기록률 <strong>100% 확보</strong><div class="cont">(계산식) 근거 조항이 기록된 확정 답변 수 ÷ 전체 확정 답변 수 × 100</div></li>
 </ul>
 <blockquote><p>도입 전 2주간 기준값 측정 후 목표치 확정 필요. 기준값 부재 시 성과 증명 불가.</p></blockquote>
 <hr>
@@ -124,7 +119,7 @@ td br{content:''; display:block; margin-top:.35em}
 <li><strong>국외근무직원</strong> — 현지 근무 중인 약 120명. 보수·복지 규정의 개별 적용 여부에 대한 산발적 문의 발생</li>
 <li><strong>후임 담당자</strong> — 인사발령으로 업무를 승계하는 담당자. 과거 처리 기준 및 근거 파악 요구</li>
 </ul>
-<p>1차 버전을 글로벌사업그룹 HR 담당자 전용으로 출시하는 사유는, 담당자의 상시 규정 확인 업무로 인한 사용 보장과 오답의 즉시 발견·교정 가능성 확보에 있음. 검증되지 않은 답변이 국외근무직원에게 우선 전달되는 상황 방지 목적.</p>
+<p>1차 버전을 글로벌사업그룹 HR 담당자 전용으로 출시하는 사유는, 담당자의 상시 규정 확인 업무로 인한 사용 보장과 오답의 즉시 발견·교정 가능성 확보. 검증되지 않은 답변이 국외근무직원에게 우선 전달되는 상황 방지 목적.</p>
 <hr>
 <h1>III. 문제 및 기회</h1>
 <h2>9. 문제 정의 / Problem Statement</h2>
