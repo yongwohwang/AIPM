@@ -41,3 +41,6 @@ pnpm-debug.log*
 *.log
 tmp/
 .cache/
+
+# --- Claude Design 캔버스 작업 파일 ---
+.claude-design-work/
